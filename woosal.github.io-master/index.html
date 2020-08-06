@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>woosal1337</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="woosal">
+    <meta name="keywords" content="woosal, developer, woosal.me, woosal.com lunar, spectrum community, infinity, services, coco external client, coco client, netsu, netssu swapper, fortnite swapper, skin changer">
+    <meta name="author" content="woosal">
+    <meta property="og:type" content="site">
+    <meta property="og:title" content="woosal">
+    <meta property="og:description" content="woosal">
+    <meta property="og:url" content="https://loving-tereshkova-ada067.netlify.app/">
+    <meta property="og:image" content="assets/icons/whey.html">
+    <meta itemprop="name" content="woosal">
+    <meta itemprop="description" content="woosal">
+    <meta itemprop="image" content="assets/icons/whey.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="icon" href="assets/others/skimask.png">
+
+    <link rel="shortcut icon" href="assets/icons/whey.html" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/stylesheet.css">
+
+</head>
+
+<body>
+    <script>
+        function MovingTitle(writeText, interval, visibleLetters) {
+            let _instance = {};
+    
+            let _currId = 0,
+                _numberOfLetters = writeText.length;
+    
+            function updateTitle() {
+                _currId += 1;
+                if (_currId > _numberOfLetters - 1) {
+                    _currId = 0;
+                }
+    
+                let startId = _currId,
+                    endId = startId + visibleLetters,
+                    finalText;
+    
+                if (endId < _numberOfLetters - 1) {
+                    finalText = writeText.substring(startId, endId);
+                } else {
+                    let cappedEndId = _numberOfLetters;
+                    endId = endId - cappedEndId;
+    
+                    finalText = writeText.substring(startId, cappedEndId) + writeText.substring(0, endId);
+                }
+    
+                document.title = finalText;
+            }
+    
+            _instance.init = function () {
+                setInterval(updateTitle, interval);
+            };
+    
+            return _instance;
+        }
+    
+        let title = new MovingTitle(' WOOSAL1337 ', 333, 20);
+        title.init();
+    </script>
+
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+    <div id="main">
+        <table class="box">
+        <tbody>
+            <tr><td><span id="line1" style="white-space:pre;"></span></td></tr>
+            <tr><td><span id="line2" style="white-space:pre;"></span></td></tr>
+            <tr><td><span id="line3 space" style="white-space:pre;"> </span></td></tr>
+            <tr><td><span id="line4" style="white-space:pre;"></span></td></tr>
+        </tbody>
+        </table>
+    </div>
+
+    <div class="container" style="display: none;">
+        <h1 class="brand-header">
+            <a href="https://instagram.com/woosal1337" target="_BLANK">woosal</a>
+        </h1>
+        
+        <p><span id="brand"></span></p>
+    </div>
+
+   <div class="marquee-container" style="display: none">
+        <pre>|<div id="marquee"></div>|</pre>
+    </div>
+
+    <div class="background" style="display: none;">
+        <div id="pattern"></div>
+
+        <audio id="audio" loop="">
+            <source src="assets/others/music.mp4" type="audio/mp4">
+            <script>
+                var audio = document.getElementById("audio");
+
+                app.audioElement = audio;
+                app.audioElement.volume = 0.666;
+            </script>
+        </audio>
+
+        <video id="background" loop="">
+            <source src="assets/others/music.mp4" type="video/mp4">
+            <script>
+                var video = document.getElementById("background");
+
+                app.videoElement = video;
+                app.videoElement.volume = 0;
+            </script>
+        </video>
+    </div>
+    
+    <div class="top-right">
+        <i><a class="skip">skip</a></i>
+    </div>
+    
+    <script type="text/javascript" src="assets/javascript/lib/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/lib/jquery.marquee.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/lib/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/lib/typed.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/portfolio.js"></script>
+</body>
+</html>
