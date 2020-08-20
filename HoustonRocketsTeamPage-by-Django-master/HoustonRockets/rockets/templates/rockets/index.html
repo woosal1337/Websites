@@ -1,0 +1,200 @@
+<style>
+
+    .exp{
+        position: relative;
+        float: left;
+        margin-right: 10px;
+        background-color: #0e0e0e;
+        margin-left: 10px;
+        margin-top:10px;
+        margin-bottom: 10px;
+        border:5px solid white;
+        width: 300px;
+        height: 410px;
+    }
+    #a:hover {
+    -webkit-transform: scaleX(1.03);
+    transform: scaleX(1.03);
+    }
+    b{
+        color:#942a25;
+    }
+    #inp{
+        text-align:center;
+        color:#942a25;
+
+    }
+        #myImg1 {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+
+        position: relative;
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -moz-transform: scale(1);
+        transition: all .3s ease-in;
+        -moz-transition: all .3s ease-in;
+        -webkit-transition: all .3s ease-in;
+        -ms-transition: all .3s ease-in;
+    }
+
+    #myImg1:hover{
+
+        z-index:1;
+        -webkit-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -moz-transform: scale(1.5);
+        transform: scale(1.5);
+
+
+    }
+    .gallery img{
+        border: 1px solid black;
+        width: 340px;
+        height: 400px;
+        float: left;
+        background-color: black;
+        background: radial-gradient(circle, black, darkgray, black);
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+    }
+     .gallery{
+        margin: auto;
+        width: 100%;
+    }
+
+</style>
+
+{% extends "rockets/base.html" %}
+
+{% comment %}{% block content1 %}
+
+        <div class="section primary-section" id="service">
+            <div class="container">
+                <!-- Start title section -->
+                <div class="title">
+                    <h1>What We Do?</h1>
+                    <!-- Section's title goes here -->
+                    <p>Duis mollis placerat quam, eget laoreet tellus tempor eu. Quisque dapibus in purus in dignissim.</p>
+                    <!--Simple description for section goes here. -->
+                </div>
+                <div class="row-fluid">
+                    <div class="span4">
+                        <div class="centered service">
+                            <div class="circle-border zoom-in">
+                                <img class="img-circle" src="/static/assets/images/Service1.png" alt="service 1">
+                            </div>
+                            <h3>Modern Design</h3>
+                            <p>We Create Modern And Clean Theme For Your Business Company.</p>
+                        </div>
+                    </div>
+                    <div class="span4">
+                        <div class="centered service">
+                            <div class="circle-border zoom-in">
+                                <img class="img-circle" src="/static/assets/images/Service2.png" alt="service 2" />
+                            </div>
+                            <h3>Powerfull Theme</h3>
+                            <p>We Create Modern And Powerful Theme With Lots Animation And Features</p>
+                        </div>
+                    </div>
+                    <div class="span4">
+                        <div class="centered service">
+                            <div class="circle-border zoom-in">
+                                <img class="img-circle" src="/static/assets/images/Service3.png" alt="service 3">
+                            </div>
+                            <h3>Clean Code</h3>
+                            <p>We Create Modern And Powerful Html5 And CSS3 Code Easy For Read And Customize.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+{% endblock content1 %}{% endcomment %}
+
+{% block content2 %}
+
+        <div class="title">SOME PHOTOS
+    </div>
+    <div class="gallery">
+    {% for imge in player_gallerys %}
+        <img id="myImg1" src="/media/{{ imge.image }}"  alt="Northern Lights, Norway">
+    {% endfor %}
+    </div>
+
+{% endblock content2 %}
+
+{% block comment1 %}
+<div id="clients">
+            <div class="section primary-section">
+                <div class="triangle"></div>
+                <div class="container">
+                    <div class="title">
+                        <h2>What Users Say?</h2>
+                        <p>Duis mollis placerat quam, eget laoreet tellus tempor eu. Quisque dapibus in purus in dignissim.</p>
+                    </div>
+                    <div class="row">
+                        {% for comment in comments %}
+                        <div class="span4">
+                            <div class="testimonial">
+                                <p>{{ comment.title }}</p>
+                                <div class="whopic">
+                                    <div class="arrow"></div>
+                                    <img src="/media/{{ comment.user1.profile.avatar }}" class="centered" alt="client 1">
+                                    <strong>{{ comment.user1 }}
+                                        <small>For {{ comment.player.name }}<img src="/media/{{ comment.player.image }}"></small>
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <p class="testimonial-text">
+                        "Perfection is Achieved Not When There Is Nothing More to Add, But When There Is Nothing Left to Take Away"
+                    </p>
+                </div>
+            </div>
+        </div>
+{% endblock comment1 %}
+
+{% block match_view %}
+
+        <div id="price" class="section secondary-section">
+            <div class="container">
+                <div class="title">
+                    <p>COMING MATCHES</p>
+                </div>
+                {% for match in matches %}
+                <div class="exp">
+                   <div class="img">
+                    <p id="a"><a href="{% url 'match_page' match.name|slugify match.id %}" ><img src="/media/{{ match.vs }}"></a></p>
+                   </div>
+                    <p><b>DERBY: </b>{{ match.name }}<br/>
+                    <b>DATE: </b>{{ match.start_day }}<br/>
+                    <b>START TIME: </b>{{ match.start_time }}<br/>
+                     <b>ARENA: </b>{{ match.arena }}<br/></p>
+
+
+                    {% if match.start_day < today %}
+                        <form action="{% url 'match_video' match.id %}" method="POST">
+                        {% csrf_token %}
+                        <p id="inp"><b>{{ match.score }}</b><br/>
+                        <input type="submit" value="WATCH THE GAME" align="middle"></p>
+                    {% else %}
+                         <form action="{% url 'buy_ticket' match.id %}" method="POST">
+                         {% csrf_token %}
+                         <p id="inp"><input type="submit" value="BUY TICKET" align="middle"></p>
+                    {% endif %}
+                    </form>
+                 </div>
+                  {% endfor %}
+            </div>
+        </div>
+
+
+{% endblock match_view %}
+
+

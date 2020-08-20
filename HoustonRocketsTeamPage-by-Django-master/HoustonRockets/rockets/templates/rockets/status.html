@@ -1,0 +1,67 @@
+<style>
+    td b{
+        color:black;
+    }
+</style>
+
+{% extends  "rockets/base.html" %}
+
+{% block content2 %}
+    <div class="title">2017 STATUS TABLE</div>
+    <table align="center"  class="asd">
+        <thead>
+               <th >PLAYERS</th><th ><abbr title="Gamed Played">G</abbr></th><th><abbr title="Points">PTS</abbr></th><th><abbr title="Field Goal Made">FG</abbr></th>
+               <th><abbr title="Field Goal %">FG%</abbr></th><th><abbr title="Three Point %">3P%</abbr></th><th><abbr title="Free Throw">FT%</abbr></th>
+               <th><abbr title="Offensive Rebounds">OREB</abbr></th><th><abbr title="Deffensive Rebounds">DREB</abbr></th><th><abbr title="Rebounds">REB</abbr></th>
+               <th><abbr title="Assits">AST</abbr></th><th><abbr title="Steals">STL</abbr></th><th><abbr title="Turn Overs">TO</abbr></th><th><abbr title="Fouls">PF</abbr></th>
+        </thead>
+{% for player in orderby_points %}
+
+       <tbody>
+       <tr><td><a href="{% url 'player' player.name|slugify player.id %}" ><img src="/media/{{ player.image }}" width="100" height="100"/><b>{{ player.name }}</b></a></td><td>{{ player.games_played }}</td><td>{{ player.points }}</td><td>{{ player.field_goals_made }}</td><td>{{ player.field_goal }}</td><td>{{ player.three_points }}</td>
+           <td>{{ player.free_throw }}</td><td>{{ player.offensive_rebounds }}</td><td>{{ player.deffensive_rebounds }}</td><td>{{ player.rebounds }}</td><td>{{ player.assists }}</td>
+           <td>{{ player.steals }}</td><td>{{ player.turn_overs }}</td><td>{{ player.fouls }}</td></tr>
+       </tbody>
+{% endfor %}
+     </table>
+
+
+{% endblock content2 %}
+
+
+{% block slider2 %}
+        <div class="section third-section">
+            <div class="container centered">
+                <div class="sub-section">
+                    <div class="title clearfix">
+                        <div class="pull-left">
+                            <h3>Matches</h3>
+                        </div>
+                        <ul class="client-nav pull-right">
+                            <li id="client-prev"></li>
+                            <li id="client-next"></li>
+                        </ul>
+                    </div>
+                     <ul class="row client-slider" id="clint-slider">
+                    {% for match in matches %}
+                        <li>
+                            <a href="{% url 'match_page' match.name|slugify match.id %}">
+                                <img id ="match_vs" src="/media/{{ match.vs }}" alt="...">
+                            </a>
+                        </li>
+                    {% endfor %}
+                     </ul>
+                </div>
+            </div>
+        </div>
+                </div>
+            </div>
+        </div>
+{% endblock slider2 %}
+
+{% block comment1 %}
+{% endblock comment1 %}
+
+
+
+

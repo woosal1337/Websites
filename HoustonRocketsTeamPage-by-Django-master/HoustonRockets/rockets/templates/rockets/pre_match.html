@@ -1,0 +1,51 @@
+{% extends "rockets/base.html" %}
+
+{% block order %}
+
+                <ul class="nav nav-pills">
+                    <li class="filter" data-filter="all">
+                        <a href="/matches/">All Matches</a>
+                    </li>
+                    <li class="filter" data-filter="all">
+                        <a href="/pre_match/">Previous Matches</a>
+                    </li>
+                    <li class="filter" data-filter="web">
+                        <a href="/next_match/">Next Matches</a>
+                    </li>
+                    <li class="filter" data-filter="web">
+                        <a href="/filter/">Filter By Home/Away</a>
+                    </li>
+                </ul>
+{% endblock order %}
+
+
+{% block content2 %}
+
+{% for match in pre_matches %}
+   <div class="formargin">
+    <div class="exp">
+       <div class="img">
+        <p id="a"><a href="{% url 'match_page' match.name|slugify match.id %}" ><img src="/media/{{ match.vs }}"></a></p>
+       </div>
+        <p><b>DERBY: </b>{{ match.name }}<br/>
+        <b>DATE: </b>{{ match.start_day }}<br/>
+        <b>START TIME: </b>{{ match.start_time }}<br/>
+         <b>ARENA: </b>{{ match.arena }}<br/></p>
+            <form action="{% url 'match_video' match.id %}" method="POST">
+            {% csrf_token %}
+            <p id="inp"><b>{{ match.score }}</b><br/>
+            <input type="submit" value="WATCH THE GAME" align="middle"></p>
+        </form>
+
+    </div>
+    <div></div>
+   </div>
+{% endfor %}
+{% endblock content2 %}
+
+{% block comment1 %}
+{% endblock comment1 %}
+
+{% block contact %}
+{% endblock contact %}
+

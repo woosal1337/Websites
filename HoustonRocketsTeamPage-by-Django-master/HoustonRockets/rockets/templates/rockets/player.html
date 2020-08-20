@@ -1,0 +1,171 @@
+{% extends "rockets/base.html" %}
+{% load static %}
+
+{% block content2 %}
+
+    <div class="abc" >
+
+       <div class="a">
+            {% if request.user.id %}
+               <div class="b"><button id="demo"></button></div>
+            {% else %}
+                <div class="b"><p id="demo">Signup or login to add Favs</p></div>
+            {% endif %}
+            <img id="abc" width=400 src="/media/{{ player.image }}" alt="...">
+       </div>
+     <p></p>
+       <div class="ab">
+           <h2 id="ab">{{ player.name | upper  }}</h2>
+           <ul type="square" id="a">
+                <li><b>NAME: </b>{{ player.age }}</li>
+                <li><b>HEIGHT: </b>{{ player.height }} CM.</li>
+                <li><b>WEIGHT: </b>{{ player.weight }} KG.</li>
+                <li><b>NUMBER: </b>{{ player.number }}</li>
+                <li><b>FROM: </b>{{ player.birthplace|upper }}</li>
+                <li><b>POSİTİON: </b>{{ player.position }}</li>
+            </ul>
+
+           <div align = center>FOLLOW HIM BY</div>
+           <div class="row-fluid centered">
+                        <ul class="social">
+                            <li>
+                                <a href="">
+                                    <span class="icon-facebook-circled"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <span class="icon-twitter-circled"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <span class="icon-linkedin-circled"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <span class="icon-pinterest-circled"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <span class="icon-dribbble-circled"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <span class="icon-gplus-circled"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+       </div>
+    <p></p>
+
+       <div class="hid">
+           <p id="a"><b>BIOGRAPHY: </b><br/>{{ player.biography }}</p>
+       </div>
+
+     </div>
+    <div class="container"></div>
+    <div class="title">PLAYER PHOTOS</div>
+     <div class="gallery">
+         {% for player_gallery in player_gallerys %}
+            <img src="/media/{{ player_gallery.image }}" alt="..." >
+         {% endfor %}
+     </div>
+     <p></p>
+    <div class="container"></div>
+
+{% endblock content2 %}
+
+{% block contact %}
+
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span5 contact-form centered">
+                <h3 name="commen">Say Your Opinion</h3>
+            {% if not request.user.id %}
+                <form method="post" action="#commen">
+                {% csrf_token %}
+                <!--<div id="successSend" class="alert alert-success invisible">
+                    <strong>Well done!</strong>Your message has been sent.</div>
+                <div id="errorSend" class="alert alert-error invisible">There was an error.</div>-->
+                            <input class="span12" type="text" value="{{values.title}}" name="title" placeholder="* Title..." disabled/>
+                            {% if errors.title %}
+                              <p style="color: red">{{errors.title}}</p>
+                            {% endif %}
+                            <!--<div class="error left-align" id="err-name">Please enter name.</div>-->
+                            <input class="span12" type="text" placeholder="* Your email..." />
+                           <!-- <div class="error left-align" id="err-email">Please enter valid email adress.</div>-->
+                            <textarea class="span12" name="yorum" placeholder="* Comments..." disabled>{{values.body}}</textarea>
+                            {% if errors.body %}
+                              <p style="color: red">{{errors.body}}</p>
+                            {% endif %}
+                            <!--<div class="error left-align" id="err-comment">Please enter your comment.</div>-->
+                    <a href="#login"><p style="color: red">Login To Save A Comment!</p></a>
+                </form>
+            {% else %}
+                <form method="post" action="#commen">
+                {% csrf_token %}
+                <!--<div id="successSend" class="alert alert-success invisible">
+                    <strong>Well done!</strong>Your message has been sent.</div>
+                <div id="errorSend" class="alert alert-error invisible">There was an error.</div>-->
+                            <input class="span12" type="text" value="{{values.title}}" name="title" placeholder="* Title..." />
+                            {% if errors.title %}
+                              <p style="color: red">{{errors.title}}</p>
+                            {% endif %}
+                            <!--<div class="error left-align" id="err-name">Please enter name.</div>-->
+                            <input class="span12" type="text" placeholder="* Your email..." />
+                           <!-- <div class="error left-align" id="err-email">Please enter valid email adress.</div>-->
+                            <textarea class="span12" name="yorum" placeholder="* Comments...">{{values.body}}</textarea>
+                            {% if errors.body %}
+                              <p style="color: red">{{errors.body}}</p>
+                            {% endif %}
+                            <!--<div class="error left-align" id="err-comment">Please enter your comment.</div>-->
+                            <input type="submit" value="SAVE COMMENT">
+                </form>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock contact %}
+
+{% block comment1 %}
+<div id="clients">
+            <div class="section primary-section">
+                <div class="triangle"></div>
+                <div class="container">
+                    <div class="title">
+                        <h2>What Users Say?</h2>
+                        <p>Duis mollis placerat quam, eget laoreet tellus tempor eu. Quisque dapibus in purus in dignissim.</p>
+                    </div>
+                    <div class="row">
+                        {% for comment in comments %}
+                        <div class="span4">
+                            <div class="testimonial">
+                                <p>{{ comment.title }}</p>
+                                <div class="whopic">
+                                    <div class="arrow"></div>
+                                    <img src="/media/{{ comment.user1.profile.avatar }}" class="centered" alt="client 1">
+                                    <strong>{{ comment.user1 }}
+                                        <small>User</small>
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <p class="testimonial-text">
+                        "Perfection is Achieved Not When There Is Nothing More to Add, But When There Is Nothing Left to Take Away"
+                    </p>
+                </div>
+            </div>
+        </div>
+{% endblock comment1 %}
+
+{% block slider2 %}
+{% endblock slider2 %}
+
+

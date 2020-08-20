@@ -1,0 +1,55 @@
+{% extends "rockets/base.html" %}
+
+{% load static %}
+
+{% block content1 %}
+
+{% endblock content1 %}
+
+{% block content2 %}
+    <div class="title">ACCOUNT SIGNUP</div>
+    <div class="bck">
+      <form  enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+          <p>
+            {{ field.label_tag }}<br>
+            {{ field }}
+            {% if field.help_text %}
+              <small style="color: black">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
+          </p>
+        {% endfor %}
+        <button type="submit">Sign up</button>
+      </form>
+    </div>
+{% endblock content2 %}
+
+{% block slider2 %}
+{% endblock slider2 %}
+
+{% block comment1 %}
+{% endblock comment1 %}
+
+{% block contact %}
+{% endblock contact %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

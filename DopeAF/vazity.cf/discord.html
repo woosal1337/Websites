@@ -1,0 +1,48 @@
+<head>
+	<link rel="stylesheet" href="styles.css">
+	<title>me on discord</title>
+
+	<script>
+	function fallbackCopyTextToClipboard(text) {
+	  var textArea = document.createElement("textarea");
+	  textArea.value = text;
+	  textArea.style.position="fixed";  //avoid scrolling to bottom
+	  document.body.appendChild(textArea);
+	  textArea.focus();
+	  textArea.select();
+
+	  try {
+	    var successful = document.execCommand('copy');
+	    var msg = successful ? 'successful' : 'unsuccessful';
+	  } catch (err) {
+	  }
+
+	  document.body.removeChild(textArea);
+	}
+	function copy(text) {
+	  if (!navigator.clipboard) {
+	    fallbackCopyTextToClipboard(text);
+	    return;a
+	  }
+	  navigator.clipboard.writeText(text).then(function() {
+	  }, function(err) {
+	  });
+	}
+	</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2>my only discord tag:</h2> <button class="button" onclick="copy('WOOSAL#3768')"><b><u><h2>woosal#3768</u></b> (click to copy)</h2></button><h2>my discord server:</h2> <a href="https://discord.gg/Eeak9SD"><h2>click</h2></a>
+</head>

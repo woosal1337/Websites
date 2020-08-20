@@ -1,0 +1,21 @@
+{% extends "rockets/base.html" %}
+
+{% block content2 %}
+    {% for team in teams %}
+    <div class="title">ABOUT PAGE</div>
+    <p>TEAM : {{ team.name }}</p>
+
+        <p>TEAM PLAYERS: <br/>
+            {% for player in players %}
+                {{ player.name }} <br/>
+            {% endfor %}
+        </p>
+
+    {% endfor %}
+{% endblock content2 %}
+
+{% block comment1 %}
+{% endblock comment1 %}
+
+{% block contact %}
+{% endblock contact %}

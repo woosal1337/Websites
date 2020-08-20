@@ -1,0 +1,34 @@
+{% extends "rockets/base.html" %}
+
+
+{% block content2 %}
+
+   <div id =matchdiv>
+    <p><img class="vs_match" src="/media/{{ match.vs }}"></p>
+    <p id="matchp"><strong>MATCH VS: </strong>{{ match.name }}<br/>
+       <strong>DATE: </strong> {{ match.start_day }}<br/>
+       <strong>START TIME: </strong> {{ match.start_time }}<br/>
+       <strong>ARENA: </strong> {{ match.arena }}<br/>
+        {% if match.start_day < today %}
+               <b>SCORE: {{ match.score }}</b><br/>
+               <a href="{% url 'match_video' match.id %}" style="color:#942a25; border:2px solid #942a25;">WATCH THE GAME</a>
+        {% else %}
+               <p align=center><a href="{% url 'buy_ticket' match.id %}"><input type="submit" value="BUY TICKET"></a></p>
+        {% endif %}
+    </p>
+   </div>
+    {% if match.start_day > today %}
+      <h3>ARENA</h3>
+      <div id="map"></div>
+    {% endif %}
+{% endblock content2 %}
+
+{% block slider2 %}
+{% endblock slider2 %}
+
+{% block comment1 %}
+{% endblock comment1 %}
+
+{% block contact %}
+{% endblock contact %}
+

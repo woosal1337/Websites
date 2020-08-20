@@ -1,0 +1,218 @@
+#matchdiv{
+    background-color: #0e0e0e;
+    margin-bottom: 10px;
+    border-radius: 100px;
+    width: auto;
+    height: 410px;
+}
+.vs_match{
+    display: block;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto
+}
+#matchp{
+    margin-left: auto;
+    margin-right: auto;
+    width: 18em;
+}
+
+/*match.html*/
+.exp{
+    position: relative;
+    float: left;
+    margin-right: 10px;
+    background-color: #000000 ;
+    background: radial-gradient(circle, black, darkgray, gray);
+    margin-left: 10px;
+    margin-top:10px;
+    margin-bottom: 10px;
+    border:5px solid #000000;
+    width: 300px;
+    height: 410px;
+}
+#a:hover {
+-webkit-transform: scaleX(1.03);
+transform: scaleX(1.03);
+}
+b{
+    color:#942a25;
+}
+#inp{
+    text-align:center;
+    color:#942a25;
+
+}
+.formargin{
+    margin: auto;
+    width: 90%;
+}
+
+/*user_page*/
+.sh{
+       background-color: #942a25;
+       border:3px solid black;
+       overflow: auto;
+   }
+
+/*ticket_page*/
+
+.bck{
+    background: linear-gradient(to bottom right, darkred, darkgray);
+    color:black;
+    overflow: auto;
+    padding: 25px;
+
+}
+legend{
+    text-align: center;
+}
+#forimg{
+    width: 50%;
+    float: right;
+}
+input[type=text]:focus {
+background-color: lightblue;
+}
+/*player_list*/
+
+.containe {
+    position: relative;
+    float: left;
+    margin-right: 10px;
+    background-color: #0e0e0e;
+    background: radial-gradient(circle, black, darkgray, black);
+    border:2px solid black;
+    margin-left: 10px;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+.middl {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.containe:hover .imag {
+  opacity: 0.5;
+}
+.containe:hover .middl {
+  opacity: 1;
+}
+.tex {
+  background-color: #942a25;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+}
+    a{
+        color:white;
+    }
+
+/*status*/
+
+table {
+    border-collapse: collapse;
+    font-size: 20px
+ }
+
+table, td, th {
+    border: 5px solid black;
+    padding: 10px;
+ }
+thead{
+    background-color: #333333;
+    font-weight:bold;
+ }
+
+ td:nth-child(2n+1){
+    background-color: darkred;
+ }
+
+td:nth-child(1):hover{
+  background-color: black;
+ }
+
+.asd{
+
+    border-collapse: collapse;
+    font-size: 20px;
+    overflow-x: auto;
+}
+td a{
+    color:#FFFFFF;
+}
+td a:hover {
+    color: #444444;
+}
+.asd tr:hover {background-color: #000000;}
+#match_vs:hover{
+    opacity:0.7;
+}
+
+/*player*/
+
+.abc {
+    background-color: #333333;
+
+}
+.hid{
+
+    height: 400px;
+    overflow: auto;
+    border:3px solid black;
+    background-color: #0e0e0e;
+     background: radial-gradient(circle, darkgray, darkred, black);
+}
+
+#abc{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.a{
+    position: relative;
+    border:3px solid black;
+    background: radial-gradient(circle, darkgray, darkred, black);
+    border-radius: 100px;
+}
+.b{
+    position: absolute;
+    top: 20px;
+    right: 40px;
+}
+.ab{
+     border:3px solid black;
+     background: radial-gradient(circle, black, darkred, black);
+}
+b{
+    color: #942a25;
+}
+#ab{
+    text-align: center;
+    color: #FFFFFF;
+}
+#a{
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+.gallery img{
+    border: 1px solid black;
+    width: 300px;
+    height: 400px;
+    float: left;
+    background-color: black;
+    background: radial-gradient(circle, black, darkred, black);
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+.gallery{
+    margin: auto;
+    width: 90%;
+}

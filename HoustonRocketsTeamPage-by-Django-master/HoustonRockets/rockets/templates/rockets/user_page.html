@@ -1,0 +1,67 @@
+<style>
+    .forcomment{
+        background-color: #942a25;
+        border:3px solid black;
+        overflow: auto;
+    }
+    li b{
+        color:black;
+    }
+    #forimage{
+        height: 100px;
+    }
+</style>
+
+{% extends "rockets/base.html" %}
+{% block content2 %}
+
+   <div class="title"><h1>USER PAGE</h1></div>
+  <div class="forcomment">
+  <b><legend>COMMENTS THAT YOU DID</legend></b>
+
+   <img  id="forimage" src="/media/{{ request.user.profile.avatar }}" alt="..." />
+    {{ user }}
+    {% for comment in comments %}
+         <ul>
+        <li><b>Comment Title </b>{{ comment.title }}</li>
+        <li><b>Comment </b>{{ comment.body }}</li>
+        <li><b>Player </b>{{ comment.player.name }}</li>
+        </ul>
+    {% endfor %}
+
+    </div>
+    <p></p>
+
+     <div align="center"><b>TICKETS THAT YOU BOUGHT</b></div>
+    {% for ticket in tickets %}
+
+
+          <div class="formargin">
+            <div class="exp">
+               <div class="img">
+                <p><img src="/media/{{ ticket.match.vs }}"></p>
+               </div>
+                <p><b>DERBY: </b>{{ ticket.match.name }}<br/>
+                <b>DATE: </b>{{ ticket.match.start_day }}<br/>
+                <b>START TIME: </b>{{ ticket.match.start_time }}<br/>
+                 <b>ARENA: </b>{{ ticket.match.arena }}<br/></p>
+            </div>
+          </div>
+
+
+    {% endfor %}
+
+    <p></p>
+    <p></p>
+
+
+{% endblock content2 %}
+
+{% block slider2 %}
+{% endblock slider2 %}
+
+{% block comment1 %}
+{% endblock comment1 %}
+
+{% block contact %}
+{% endblock contact %}

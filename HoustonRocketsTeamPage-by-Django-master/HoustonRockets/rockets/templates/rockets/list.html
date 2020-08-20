@@ -1,0 +1,53 @@
+{% extends "rockets/base.html" %}
+
+{% block content2 %}
+    <form action="" method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+    {% for obj in filter.qs %}
+        {{ obj.name }} - ${{ obj.position }}<br />
+    {% endfor %}
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <form action="" method="get">
+        {{ filterm.form.as_p }}
+        <input type="submit" value="FILTER"/>
+    </form>
+    {% for match in filterm.qs %}
+        <div class="formargin">
+        <div class="exp">
+           <div class="img">
+            <p id="a"><a href="{% url 'match_page' match.name|slugify match.id %}" ><img src="/media/{{ match.vs }}"></a></p>
+           </div>
+            <p><b>DERBY: </b>{{ match.name }}<br/>
+            <b>DATE: </b>{{ match.start_day }}<br/>
+            <b>START TIME: </b>{{ match.start_time }}<br/>
+             <b>ARENA: </b>{{ match.arena }}<br/>
+            {% if match.start_day < today %}
+                <form action="{% url 'match_video' match.id %}" method="POST">
+                {% csrf_token %}
+                <p id="inp">
+                    <input type="submit" value="WATCH THE GAME" align="middle"></p></form>
+            {% else %}
+                 <a href="{% url 'buy_ticket' match.id %}">
+                     <p id="inp"><input type="submit" value="BUY TICKET" align="middle"></p></a>
+            {% endif %}
+            </a>
+
+        </div>
+    </div>
+
+    {% endfor %}
+{% endblock content2 %}
+
+{% block slider2 %}
+{% endblock slider2 %}
+
+{% block comment1 %}
+{% endblock comment1 %}
+
+{% block contact %}
+{% endblock contact %}

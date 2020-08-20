@@ -1,0 +1,67 @@
+<style>
+    #myImg1 {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+
+        position: relative;
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -moz-transform: scale(1);
+        transition: all .3s ease-in;
+        -moz-transition: all .3s ease-in;
+        -webkit-transition: all .3s ease-in;
+        -ms-transition: all .3s ease-in;
+    }
+
+    #myImg1:hover{
+
+        z-index:1;
+        -webkit-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -moz-transform: scale(1.5);
+        transform: scale(1.5);
+
+
+    }
+    .gallery img{
+        border: 1px solid black;
+        width: 340px;
+        height: 400px;
+        float: left;
+        background-color: black;
+        background: radial-gradient(circle, black, darkgray, black);
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+    }
+     .gallery{
+        margin: auto;
+        width: 100%;
+    }
+
+#myImg1:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+</style>
+{% extends "rockets/base.html" %}
+
+{% block content2 %}
+    <div class="title">GALLERY
+    </div>
+    <div class="gallery">
+    {% for imge in imges %}
+        <img id="myImg1" src="/media/{{ imge.image }}"  alt="Northern Lights, Norway">
+    {% endfor %}
+    </div>
+{% endblock content2 %}
+
+{% block slider2 %}
+{% endblock slider2 %}
+
+{% block comment1 %}
+{% endblock comment1 %}
+
+{% block contact %}
+{% endblock contact %}

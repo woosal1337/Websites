@@ -1,0 +1,12 @@
+{% for player in players %}
+<div class="containe">
+  <img src="/media/{{ player.image }}" alt="Avatar" class="imag" >
+  <div class="middl">
+      <div class="tex"><a href="{% url 'player' player.name|slugify player.id %}" >{{ player.name }}</a></div>
+  </div>
+</div>
+
+{% endfor %}
+
+
+

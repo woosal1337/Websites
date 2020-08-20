@@ -1,0 +1,52 @@
+<style>
+     #bold{
+         color:black;
+     }
+</style>
+
+{% extends  "rockets/base.html" %}
+
+{% block content2 %}
+
+
+    <h3>Buy Ticket</h3>
+    <div class="bck">
+     <b id ="bold">Price : {{ match.price }} $</b><br/>
+
+        <b id ="bold">Seating Map</b><br/>
+        <div id="forimg">
+        <img  src="/media/{{ match.seating_map }}" width="700" ></div>
+     <form method="post" >
+      {% csrf_token %}
+
+      <b id ="bold">Credit Card Number: </b><input type="text" value="{{values.creditcard}}" name="creditcard"> <br/>
+      {% if errors.creditcard %}
+      <b id ="bold"><p style="color: red">{{errors.creditcard}}</p></b>
+      {% endif %}
+         <b id ="bold">Seat Number : </b><input type="number" name="seat_number" min="0">{{values.seat_number}}<br/>
+      {% if errors.seat_number %}
+      <p style="color: red">{{errors.seat_number}}</p>
+      {% endif %}
+      <input type="submit" value="BUY" >
+
+     </form>
+
+    </div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+
+
+{% endblock content2 %}
+
+{% block slider2 %}
+{% endblock slider2 %}
+
+{% block comment1 %}
+{% endblock comment1 %}
+
+{% block contact %}
+{% endblock contact %}
